@@ -56,6 +56,15 @@ Bash
 python src/train.py --base_model densenet --head_type modified --data_dir "path/ke/data"
 Model yang sudah dilatih akan disimpan secara otomatis di dalam folder saved_models/ dengan nama yang sesuai (misal: inception_original.h5).
 
+## 💾 Dataset
+
+Dataset yang digunakan dalam proyek ini terdiri dari 1000 gambar pisang yang dibagi menjadi tiga kelas. Dataset tidak disertakan langsung di dalam repository ini karena ukurannya yang besar.
+
+Untuk menjalankan training, Anda perlu mengunduh dataset secara terpisah.
+
+1.  **Unduh dataset** dari link berikut: [Link Google Drive Anda]
+2.  Saat menjalankan skrip training, arahkan argumen `--data_dir` ke lokasi folder hasil ekstraksi tersebut.
+
 ## 🛠️ Dibangun Dengan
 * **TensorFlow / Keras**
 * **Python 3.x**
