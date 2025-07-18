@@ -19,45 +19,42 @@ Eksperimen ini secara sistematis membandingkan 6 variasi model untuk menemukan a
 ├── README.md           # Anda sedang membacanya
 └── requirements.txt    # Daftar library yang dibutuhkan
 
-## ⚙️ Cara Menjalankan Eksperimen
+## ⚙️ Cara Menjalankan
+Clone Repository Ini
 
-Skrip training dirancang agar fleksibel, memungkinkan Anda untuk melatih model apa pun melalui argumen di command line.
+Bash
 
-1.  **Clone repository ini:**
-    ```bash
-    git clone [https://github.com/](https://github.com/)[NAMA_USER_ANDA]/klasifikasi-pisang.git
-    cd klasifikasi-pisang
-    ```
+git clone https://github.com/whyd-nrzlvn/klasifikasi-pisang.git
+cd klasifikasi-pisang
+Install Semua Library yang Dibutuhkan
+Pastikan Anda memiliki Python dan pip terinstall. Jalankan perintah ini di terminal untuk menginstall semua library yang diperlukan.
 
-2.  **Install semua library yang dibutuhkan:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+Bash
 
-3.  **Jalankan Training:**
-    Gunakan perintah `python src/train.py` dengan flag `--base_model`, `--head_type`, dan `--data_dir`.
+pip install -r requirements.txt
+Jalankan Training Model
+Gunakan skrip src/train.py untuk melatih model. Anda bisa memilih arsitektur dan tipe head melalui command-line.
 
-    * `--base_model`: Pilih antara `mobilenet`, `inception`, atau `densenet`.
-    * `--head_type`: Pilih antara `original` atau `modified`.
-    * `--data_dir`: Path menuju folder dataset Anda.
+--base_model: Pilih antara mobilenet, inception, atau densenet.
 
-    **Contoh Perintah:**
+--head_type: Pilih antara original atau modified.
 
-    * Melatih **InceptionV3** dengan *head* **original**:
-        ```bash
-        python src/train.py --base_model inception --head_type original --data_dir "path/ke/data"
-        ```
+--data_dir: Wajib diisi, arahkan ke path folder dataset Anda.
 
-    * Melatih **DenseNet** dengan *head* **modifikasi**:
-        ```bash
-        python src/train.py --base_model densenet --head_type modified --data_dir "path/ke/data"
-        ```
+Contoh Perintah:
 
-    * Jika tidak ada flag, defaultnya akan melatih **MobileNet** dengan *head* **modifikasi**:
-        ```bash
-        python src/train.py --data_dir "path/ke/data"
-        ```
-    Model yang sudah dilatih akan disimpan secara otomatis di dalam folder `saved_models/` dengan nama yang sesuai (misal: `inception_original.h5`).
+Melatih InceptionV3 dengan head original:
+
+Bash
+
+python src/train.py --base_model inception --head_type original --data_dir "path/ke/data"
+
+Melatih DenseNet dengan head modifikasi:
+
+Bash
+
+python src/train.py --base_model densenet --head_type modified --data_dir "path/ke/data"
+Model yang sudah dilatih akan disimpan secara otomatis di dalam folder saved_models/ dengan nama yang sesuai (misal: inception_original.h5).
 
 ## 🛠️ Dibangun Dengan
 * **TensorFlow / Keras**
