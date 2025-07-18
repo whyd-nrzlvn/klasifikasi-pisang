@@ -62,7 +62,7 @@ Dataset yang digunakan dalam proyek ini terdiri dari 1000 gambar pisang yang dib
 
 Untuk menjalankan training, Anda perlu mengunduh dataset secara terpisah.
 
-1.  **Unduh dataset** dari link berikut: [Link Google Drive Anda]
+1.  **Unduh dataset** dari link berikut: (https://drive.google.com/drive/folders/15a6ajSyxtIO1__L59aYvHLUuEcAXYLnt?usp=sharing)
 2.  Saat menjalankan skrip training, arahkan argumen `--data_dir` ke lokasi folder hasil ekstraksi tersebut.
 
 ## 🛠️ Dibangun Dengan
