@@ -4,7 +4,7 @@ Sebuah proyek untuk melakukan klasifikasi tingkat kematangan buah pisang secara 
 
 ## 🎯 Latar Belakang
 
-Proses penyortiran buah di industri seringkali bersifat manual, yang dapat menyebabkan inkonsistensi dan inefisiensi. Proyek ini bertujuan untuk menciptakan solusi otomatis yang objektif dan terukur menggunakan *Computer Vision* untuk mengkategorikan pisang ke dalam tiga kelas: **Mentah**, **Matang**, dan **Terlalu Matang**.
+Proses penyortiran buah di industri seringkali bersifat manual, yang dapat menyebabkan inkonsistensi dan inefisiensi. Proyek ini bertujuan untuk menciptakan solusi otomatis yang objektif dan terukur menggunakan *Computer Vision* untuk mengkategorikan pisang ke dalam tiga kelas: **Mentah**, **Matang**, dan **Busuk**.
 
 Eksperimen ini secara sistematis membandingkan 6 variasi model untuk menemukan arsitektur yang paling optimal untuk tugas ini.
 
