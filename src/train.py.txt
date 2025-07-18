@@ -1,0 +1,55 @@
+# src/train.py
+
+import os
+import argparse
+from tensorflow.keras.callbacks import EarlyStopping
+from data_loader import create_data_generators
+from models import create_model
+
+# Membuat parser untuk menerima argumen dari command line
+parser = argparse.ArgumentParser(description="Script untuk melatih model klasifikasi pisang.")
+parser.add_argument('--base_model', type=str, default='mobilenet', choices=['mobilenet', 'inception', 'densenet'], help='Pilih base model.')
+parser.add_argument('--head_type', type=str, default='modified', choices=['original', 'modified'], help='Pilih tipe head klasifikasi.')
+parser.add_argument('--data_dir', type=str, required=True, help='Path ke direktori dataset Anda.')
+parser.add_argument('--epochs', type=int, default=50, help='Jumlah epochs untuk training.')
+args = parser.parse_args()
+
+# -- KONFIGURASI --
+DATA_DIR = args.data_dir
+BASE_MODEL_NAME = args.base_model
+HEAD_TYPE = args.head_type
+EPOCHS = args.epochs
+
+# Membuat nama file model yang dinamis agar tidak tertimpa
+MODEL_SAVE_DIR = '../saved_models/'
+if not os.path.exists(MODEL_SAVE_DIR):
+    os.makedirs(MODEL_SAVE_DIR)
+MODEL_SAVE_PATH = os.path.join(MODEL_SAVE_DIR, f'{BASE_MODEL_NAME}_{HEAD_TYPE}.h5')
+
+# 1. Siapkan Data
+train_data, valid_data = create_data_generators(base_dir=DATA_DIR)
+num_classes = len(train_data.class_indices)
+
+# 2. Buat Model sesuai argumen yang diberikan
+model = create_model(
+    base_model_name=BASE_MODEL_NAME,
+    head_type=HEAD_TYPE,
+    num_classes=num_classes
+)
+
+# 3. Siapkan Callback
+early_stopping = EarlyStopping(monitor='val_accuracy', patience=10, restore_best_weights=True)
+
+# 4. Latih Model
+print(f"\n--- Memulai Training: {BASE_MODEL_NAME} dengan head {HEAD_TYPE} ---")
+model.fit(
+    train_data,
+    validation_data=valid_data,
+    epochs=EPOCHS,
+    callbacks=[early_stopping]
+)
+print("--- Proses Training Selesai ---")
+
+# 5. Simpan Model Final
+model.save(MODEL_SAVE_PATH)
+print(f"Model berhasil disimpan di: {MODEL_SAVE_PATH}")
